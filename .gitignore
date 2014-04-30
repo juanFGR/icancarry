@@ -1,0 +1,6 @@
+.buildpath
+.project
+.settings/
+logs/
+tmp/
+configuration.php
