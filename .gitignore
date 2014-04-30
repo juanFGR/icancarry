@@ -3,4 +3,4 @@
 .settings/
 logs/
 tmp/
-configuration.php
+configuration.*
