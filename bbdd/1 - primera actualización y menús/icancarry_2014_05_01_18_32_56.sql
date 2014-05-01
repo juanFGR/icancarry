@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-05-2014 a las 19:31:46
+-- Tiempo de generación: 01-05-2014 a las 20:10:39
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.11
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `omel9_assets`
 --
 
+DROP TABLE IF EXISTS `omel9_assets`;
 CREATE TABLE IF NOT EXISTS `omel9_assets` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria',
   `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT 'Anidadas al conjunto padre.',
@@ -121,6 +122,7 @@ INSERT INTO `omel9_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `t
 -- Estructura de tabla para la tabla `omel9_associations`
 --
 
+DROP TABLE IF EXISTS `omel9_associations`;
 CREATE TABLE IF NOT EXISTS `omel9_associations` (
   `id` int(11) NOT NULL COMMENT 'A reference to the associated item.',
   `context` varchar(50) NOT NULL COMMENT 'The context of the associated item.',
@@ -135,6 +137,7 @@ CREATE TABLE IF NOT EXISTS `omel9_associations` (
 -- Estructura de tabla para la tabla `omel9_banners`
 --
 
+DROP TABLE IF EXISTS `omel9_banners`;
 CREATE TABLE IF NOT EXISTS `omel9_banners` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` int(11) NOT NULL DEFAULT '0',
@@ -193,6 +196,7 @@ INSERT INTO `omel9_banners` (`id`, `cid`, `type`, `name`, `alias`, `imptotal`, `
 -- Estructura de tabla para la tabla `omel9_banner_clients`
 --
 
+DROP TABLE IF EXISTS `omel9_banner_clients`;
 CREATE TABLE IF NOT EXISTS `omel9_banner_clients` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
@@ -228,6 +232,7 @@ INSERT INTO `omel9_banner_clients` (`id`, `name`, `contact`, `email`, `extrainfo
 -- Estructura de tabla para la tabla `omel9_banner_tracks`
 --
 
+DROP TABLE IF EXISTS `omel9_banner_tracks`;
 CREATE TABLE IF NOT EXISTS `omel9_banner_tracks` (
   `track_date` datetime NOT NULL,
   `track_type` int(10) unsigned NOT NULL,
@@ -245,6 +250,7 @@ CREATE TABLE IF NOT EXISTS `omel9_banner_tracks` (
 -- Estructura de tabla para la tabla `omel9_categories`
 --
 
+DROP TABLE IF EXISTS `omel9_categories`;
 CREATE TABLE IF NOT EXISTS `omel9_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
@@ -306,6 +312,7 @@ INSERT INTO `omel9_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `le
 -- Estructura de tabla para la tabla `omel9_contact_details`
 --
 
+DROP TABLE IF EXISTS `omel9_contact_details`;
 CREATE TABLE IF NOT EXISTS `omel9_contact_details` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
@@ -367,6 +374,7 @@ CREATE TABLE IF NOT EXISTS `omel9_contact_details` (
 -- Estructura de tabla para la tabla `omel9_content`
 --
 
+DROP TABLE IF EXISTS `omel9_content`;
 CREATE TABLE IF NOT EXISTS `omel9_content` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
@@ -414,7 +422,7 @@ CREATE TABLE IF NOT EXISTS `omel9_content` (
 --
 
 INSERT INTO `omel9_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `fulltext`, `state`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
-(1, 61, 'Introducción Joomla! 3', 'introduccion-joomla-3', '<p>Es fácil empezar a crear su sitio web. Conocer algunos de los conceptos básicos le ayudará.</p>\r\n<h3>¿Qué es un Sistema de Gestión de Contenidos?</h3>\r\n<p>Un Sistema de Gestión de Contenidos es un software que te permite crear y administrar páginas web fácilmente separando la creación de su contenido de la mecánica necesaria para presentarlo en la web..</p>\r\n<p>En este sitio, el contenido se almacena en una base de datos. El aspecto y la sensación son creados por una plantilla. El software de Joomla! reúne la plantilla y el contenido para crear páginas web.</p>\r\n<h3>Sitio y Administrador</h3>\r\n<p>El sitio tiene actualmente dos sitios separados. El sitio de la parte delantera (también llamado (Frontend) es lo que los visitantes verán de su sitio . El administrador (también llamado el backend) es utilizado por personas que gestionan el sitio. Puede acceder al administrador haciendo clic en el "Administrador del sitio" en el "Menú de usuario" el menú es (visible una vez que se conecte) o añadiendo /administrator al final del nombre de su dominio.</p>\r\n<p>Inicie sesión en el administrador con el nombre de usuario y contraseña creados durante la instalación de Joomla.</p>\r\n<h3>Iniciar una sesión</h3>\r\n<p>Para acceder a la parte delantera de su sitio usar el formulario de acceso. Utilice el nombre de usuario y contraseña que se crearon como parte del proceso de instalación. Una vez que han iniciado la sesión serán capaces de crear y editar artículos.</p>\r\n<p>En la gestión de su sitio, usted será capaz de crear contenido que sólo los usuarios registrados puedan ver.</p>\r\n<h3>La creación de un artículo</h3>\r\n<p>Una vez que se registran un nuevo menú será visible (Menú de Usuario). Para crear un nuevo artículo, hacer clic en "Enviar artículo" enlace que aparece en ese mismo menú.</p>\r\n<p>La interfaz del nuevo artículo le da un montón de opciones, pero todo lo que necesita hacer es añadir un título y poner algo en el área de contenido. Para que sea más fácil de encontrar, establecer el estado de publicado.</p>\r\n<div>Usted puede editar un artículo existente haciendo clic en el icono de edición de la parte superior del artículo (esto sólo se muestra a los usuarios que tienen el derecho de poder editar)..</div>\r\n<h3>Obtenga más información</h3>\r\n<p>Hay mucho más que aprender acerca de cómo utilizar Joomla! para crear el sitio web que usted imagina. Usted puede aprender mucho más en sitios como: <a href="http://docs.joomla.org">El sitio de documentación de Joomla! Oficial (Inglés)</a> o en los foros de<a href="http://www.joomlaspanish.org/foros"> Joomla! Spanish</a></p>', '', 1, 2, '2013-11-16 00:00:00', 962, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2013-11-16 00:00:00', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 1, 0, '', '', 1, 74, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
+(1, 61, 'Introducción Joomla! 3', 'introduccion-joomla-3', '<p>Es fácil empezar a crear su sitio web. Conocer algunos de los conceptos básicos le ayudará.</p>\r\n<h3>¿Qué es un Sistema de Gestión de Contenidos?</h3>\r\n<p>Un Sistema de Gestión de Contenidos es un software que te permite crear y administrar páginas web fácilmente separando la creación de su contenido de la mecánica necesaria para presentarlo en la web..</p>\r\n<p>En este sitio, el contenido se almacena en una base de datos. El aspecto y la sensación son creados por una plantilla. El software de Joomla! reúne la plantilla y el contenido para crear páginas web.</p>\r\n<h3>Sitio y Administrador</h3>\r\n<p>El sitio tiene actualmente dos sitios separados. El sitio de la parte delantera (también llamado (Frontend) es lo que los visitantes verán de su sitio . El administrador (también llamado el backend) es utilizado por personas que gestionan el sitio. Puede acceder al administrador haciendo clic en el "Administrador del sitio" en el "Menú de usuario" el menú es (visible una vez que se conecte) o añadiendo /administrator al final del nombre de su dominio.</p>\r\n<p>Inicie sesión en el administrador con el nombre de usuario y contraseña creados durante la instalación de Joomla.</p>\r\n<h3>Iniciar una sesión</h3>\r\n<p>Para acceder a la parte delantera de su sitio usar el formulario de acceso. Utilice el nombre de usuario y contraseña que se crearon como parte del proceso de instalación. Una vez que han iniciado la sesión serán capaces de crear y editar artículos.</p>\r\n<p>En la gestión de su sitio, usted será capaz de crear contenido que sólo los usuarios registrados puedan ver.</p>\r\n<h3>La creación de un artículo</h3>\r\n<p>Una vez que se registran un nuevo menú será visible (Menú de Usuario). Para crear un nuevo artículo, hacer clic en "Enviar artículo" enlace que aparece en ese mismo menú.</p>\r\n<p>La interfaz del nuevo artículo le da un montón de opciones, pero todo lo que necesita hacer es añadir un título y poner algo en el área de contenido. Para que sea más fácil de encontrar, establecer el estado de publicado.</p>\r\n<div>Usted puede editar un artículo existente haciendo clic en el icono de edición de la parte superior del artículo (esto sólo se muestra a los usuarios que tienen el derecho de poder editar)..</div>\r\n<h3>Obtenga más información</h3>\r\n<p>Hay mucho más que aprender acerca de cómo utilizar Joomla! para crear el sitio web que usted imagina. Usted puede aprender mucho más en sitios como: <a href="http://docs.joomla.org">El sitio de documentación de Joomla! Oficial (Inglés)</a> o en los foros de<a href="http://www.joomlaspanish.org/foros"> Joomla! Spanish</a></p>', '', 1, 2, '2013-11-16 00:00:00', 962, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2013-11-16 00:00:00', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 1, 0, '', '', 1, 75, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
 
 -- --------------------------------------------------------
 
@@ -422,6 +430,7 @@ INSERT INTO `omel9_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `f
 -- Estructura de tabla para la tabla `omel9_contentitem_tag_map`
 --
 
+DROP TABLE IF EXISTS `omel9_contentitem_tag_map`;
 CREATE TABLE IF NOT EXISTS `omel9_contentitem_tag_map` (
   `type_alias` varchar(255) NOT NULL DEFAULT '',
   `core_content_id` int(10) unsigned NOT NULL COMMENT 'PK from the core content table',
@@ -450,6 +459,7 @@ INSERT INTO `omel9_contentitem_tag_map` (`type_alias`, `core_content_id`, `conte
 -- Estructura de tabla para la tabla `omel9_content_frontpage`
 --
 
+DROP TABLE IF EXISTS `omel9_content_frontpage`;
 CREATE TABLE IF NOT EXISTS `omel9_content_frontpage` (
   `content_id` int(11) NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '0',
@@ -462,6 +472,7 @@ CREATE TABLE IF NOT EXISTS `omel9_content_frontpage` (
 -- Estructura de tabla para la tabla `omel9_content_rating`
 --
 
+DROP TABLE IF EXISTS `omel9_content_rating`;
 CREATE TABLE IF NOT EXISTS `omel9_content_rating` (
   `content_id` int(11) NOT NULL DEFAULT '0',
   `rating_sum` int(10) unsigned NOT NULL DEFAULT '0',
@@ -476,6 +487,7 @@ CREATE TABLE IF NOT EXISTS `omel9_content_rating` (
 -- Estructura de tabla para la tabla `omel9_content_types`
 --
 
+DROP TABLE IF EXISTS `omel9_content_types`;
 CREATE TABLE IF NOT EXISTS `omel9_content_types` (
   `type_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type_title` varchar(255) NOT NULL DEFAULT '',
@@ -516,6 +528,7 @@ INSERT INTO `omel9_content_types` (`type_id`, `type_title`, `type_alias`, `table
 -- Estructura de tabla para la tabla `omel9_core_log_searches`
 --
 
+DROP TABLE IF EXISTS `omel9_core_log_searches`;
 CREATE TABLE IF NOT EXISTS `omel9_core_log_searches` (
   `search_term` varchar(128) NOT NULL DEFAULT '',
   `hits` int(10) unsigned NOT NULL DEFAULT '0'
@@ -527,6 +540,7 @@ CREATE TABLE IF NOT EXISTS `omel9_core_log_searches` (
 -- Estructura de tabla para la tabla `omel9_extensions`
 --
 
+DROP TABLE IF EXISTS `omel9_extensions`;
 CREATE TABLE IF NOT EXISTS `omel9_extensions` (
   `extension_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -709,6 +723,7 @@ INSERT INTO `omel9_extensions` (`extension_id`, `name`, `type`, `element`, `fold
 -- Estructura de tabla para la tabla `omel9_finder_filters`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_filters`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_filters` (
   `filter_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
@@ -733,6 +748,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_filters` (
 -- Estructura de tabla para la tabla `omel9_finder_links`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links` (
   `link_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `url` varchar(255) NOT NULL,
@@ -768,6 +784,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links` (
 -- Estructura de tabla para la tabla `omel9_finder_links_terms0`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_terms0`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms0` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -783,6 +800,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms0` (
 -- Estructura de tabla para la tabla `omel9_finder_links_terms1`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_terms1`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms1` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -798,6 +816,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms1` (
 -- Estructura de tabla para la tabla `omel9_finder_links_terms2`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_terms2`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms2` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -813,6 +832,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms2` (
 -- Estructura de tabla para la tabla `omel9_finder_links_terms3`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_terms3`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms3` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -828,6 +848,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms3` (
 -- Estructura de tabla para la tabla `omel9_finder_links_terms4`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_terms4`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms4` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -843,6 +864,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms4` (
 -- Estructura de tabla para la tabla `omel9_finder_links_terms5`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_terms5`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms5` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -858,6 +880,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms5` (
 -- Estructura de tabla para la tabla `omel9_finder_links_terms6`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_terms6`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms6` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -873,6 +896,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms6` (
 -- Estructura de tabla para la tabla `omel9_finder_links_terms7`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_terms7`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms7` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -888,6 +912,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms7` (
 -- Estructura de tabla para la tabla `omel9_finder_links_terms8`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_terms8`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms8` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -903,6 +928,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms8` (
 -- Estructura de tabla para la tabla `omel9_finder_links_terms9`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_terms9`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms9` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -918,6 +944,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_terms9` (
 -- Estructura de tabla para la tabla `omel9_finder_links_termsa`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_termsa`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_termsa` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -933,6 +960,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_termsa` (
 -- Estructura de tabla para la tabla `omel9_finder_links_termsb`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_termsb`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_termsb` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -948,6 +976,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_termsb` (
 -- Estructura de tabla para la tabla `omel9_finder_links_termsc`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_termsc`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_termsc` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -963,6 +992,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_termsc` (
 -- Estructura de tabla para la tabla `omel9_finder_links_termsd`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_termsd`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_termsd` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -978,6 +1008,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_termsd` (
 -- Estructura de tabla para la tabla `omel9_finder_links_termse`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_termse`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_termse` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -993,6 +1024,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_termse` (
 -- Estructura de tabla para la tabla `omel9_finder_links_termsf`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_links_termsf`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_links_termsf` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
@@ -1008,6 +1040,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_links_termsf` (
 -- Estructura de tabla para la tabla `omel9_finder_taxonomy`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_taxonomy`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_taxonomy` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -1036,6 +1069,7 @@ INSERT INTO `omel9_finder_taxonomy` (`id`, `parent_id`, `title`, `state`, `acces
 -- Estructura de tabla para la tabla `omel9_finder_taxonomy_map`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_taxonomy_map`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_taxonomy_map` (
   `link_id` int(10) unsigned NOT NULL,
   `node_id` int(10) unsigned NOT NULL,
@@ -1050,6 +1084,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_taxonomy_map` (
 -- Estructura de tabla para la tabla `omel9_finder_terms`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_terms`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_terms` (
   `term_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `term` varchar(75) NOT NULL,
@@ -1073,6 +1108,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_terms` (
 -- Estructura de tabla para la tabla `omel9_finder_terms_common`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_terms_common`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_terms_common` (
   `term` varchar(75) NOT NULL,
   `language` varchar(3) NOT NULL,
@@ -1207,6 +1243,7 @@ INSERT INTO `omel9_finder_terms_common` (`term`, `language`) VALUES
 -- Estructura de tabla para la tabla `omel9_finder_tokens`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_tokens`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_tokens` (
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
@@ -1225,6 +1262,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_tokens` (
 -- Estructura de tabla para la tabla `omel9_finder_tokens_aggregate`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_tokens_aggregate`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_tokens_aggregate` (
   `term_id` int(10) unsigned NOT NULL,
   `map_suffix` char(1) NOT NULL,
@@ -1247,6 +1285,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_tokens_aggregate` (
 -- Estructura de tabla para la tabla `omel9_finder_types`
 --
 
+DROP TABLE IF EXISTS `omel9_finder_types`;
 CREATE TABLE IF NOT EXISTS `omel9_finder_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
@@ -1261,6 +1300,7 @@ CREATE TABLE IF NOT EXISTS `omel9_finder_types` (
 -- Estructura de tabla para la tabla `omel9_languages`
 --
 
+DROP TABLE IF EXISTS `omel9_languages`;
 CREATE TABLE IF NOT EXISTS `omel9_languages` (
   `lang_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `lang_code` char(7) NOT NULL,
@@ -1297,6 +1337,7 @@ INSERT INTO `omel9_languages` (`lang_id`, `lang_code`, `title`, `title_native`, 
 -- Estructura de tabla para la tabla `omel9_menu`
 --
 
+DROP TABLE IF EXISTS `omel9_menu`;
 CREATE TABLE IF NOT EXISTS `omel9_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menutype` varchar(24) NOT NULL COMMENT 'The type of menu this item belongs to. FK to #__menu_types.menutype',
@@ -1375,6 +1416,7 @@ INSERT INTO `omel9_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `l
 -- Estructura de tabla para la tabla `omel9_menu_types`
 --
 
+DROP TABLE IF EXISTS `omel9_menu_types`;
 CREATE TABLE IF NOT EXISTS `omel9_menu_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `menutype` varchar(24) NOT NULL,
@@ -1397,6 +1439,7 @@ INSERT INTO `omel9_menu_types` (`id`, `menutype`, `title`, `description`) VALUES
 -- Estructura de tabla para la tabla `omel9_messages`
 --
 
+DROP TABLE IF EXISTS `omel9_messages`;
 CREATE TABLE IF NOT EXISTS `omel9_messages` (
   `message_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id_from` int(10) unsigned NOT NULL DEFAULT '0',
@@ -1417,6 +1460,7 @@ CREATE TABLE IF NOT EXISTS `omel9_messages` (
 -- Estructura de tabla para la tabla `omel9_messages_cfg`
 --
 
+DROP TABLE IF EXISTS `omel9_messages_cfg`;
 CREATE TABLE IF NOT EXISTS `omel9_messages_cfg` (
   `user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `cfg_name` varchar(100) NOT NULL DEFAULT '',
@@ -1430,6 +1474,7 @@ CREATE TABLE IF NOT EXISTS `omel9_messages_cfg` (
 -- Estructura de tabla para la tabla `omel9_modules`
 --
 
+DROP TABLE IF EXISTS `omel9_modules`;
 CREATE TABLE IF NOT EXISTS `omel9_modules` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
@@ -1492,6 +1537,7 @@ INSERT INTO `omel9_modules` (`id`, `asset_id`, `title`, `note`, `content`, `orde
 -- Estructura de tabla para la tabla `omel9_modules_menu`
 --
 
+DROP TABLE IF EXISTS `omel9_modules_menu`;
 CREATE TABLE IF NOT EXISTS `omel9_modules_menu` (
   `moduleid` int(11) NOT NULL DEFAULT '0',
   `menuid` int(11) NOT NULL DEFAULT '0',
@@ -1538,6 +1584,7 @@ INSERT INTO `omel9_modules_menu` (`moduleid`, `menuid`) VALUES
 -- Estructura de tabla para la tabla `omel9_newsfeeds`
 --
 
+DROP TABLE IF EXISTS `omel9_newsfeeds`;
 CREATE TABLE IF NOT EXISTS `omel9_newsfeeds` (
   `catid` int(11) NOT NULL DEFAULT '0',
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -1585,6 +1632,7 @@ CREATE TABLE IF NOT EXISTS `omel9_newsfeeds` (
 -- Estructura de tabla para la tabla `omel9_overrider`
 --
 
+DROP TABLE IF EXISTS `omel9_overrider`;
 CREATE TABLE IF NOT EXISTS `omel9_overrider` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `constant` varchar(255) NOT NULL,
@@ -1599,6 +1647,7 @@ CREATE TABLE IF NOT EXISTS `omel9_overrider` (
 -- Estructura de tabla para la tabla `omel9_postinstall_messages`
 --
 
+DROP TABLE IF EXISTS `omel9_postinstall_messages`;
 CREATE TABLE IF NOT EXISTS `omel9_postinstall_messages` (
   `postinstall_message_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `extension_id` bigint(20) NOT NULL DEFAULT '700' COMMENT 'FK to #__extensions',
@@ -1633,6 +1682,7 @@ INSERT INTO `omel9_postinstall_messages` (`postinstall_message_id`, `extension_i
 -- Estructura de tabla para la tabla `omel9_redirect_links`
 --
 
+DROP TABLE IF EXISTS `omel9_redirect_links`;
 CREATE TABLE IF NOT EXISTS `omel9_redirect_links` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `old_url` varchar(255) NOT NULL,
@@ -1654,6 +1704,7 @@ CREATE TABLE IF NOT EXISTS `omel9_redirect_links` (
 -- Estructura de tabla para la tabla `omel9_schemas`
 --
 
+DROP TABLE IF EXISTS `omel9_schemas`;
 CREATE TABLE IF NOT EXISTS `omel9_schemas` (
   `extension_id` int(11) NOT NULL,
   `version_id` varchar(20) NOT NULL,
@@ -1673,6 +1724,7 @@ INSERT INTO `omel9_schemas` (`extension_id`, `version_id`) VALUES
 -- Estructura de tabla para la tabla `omel9_session`
 --
 
+DROP TABLE IF EXISTS `omel9_session`;
 CREATE TABLE IF NOT EXISTS `omel9_session` (
   `session_id` varchar(200) NOT NULL DEFAULT '',
   `client_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
@@ -1691,8 +1743,8 @@ CREATE TABLE IF NOT EXISTS `omel9_session` (
 --
 
 INSERT INTO `omel9_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('gnid933cga80oi3au853e3ijb4', 1, 0, '1398965420', '__default|a:8:{s:15:"session.counter";i:332;s:19:"session.timer.start";i:1398959196;s:18:"session.timer.last";i:1398965419;s:17:"session.timer.now";i:1398965419;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":11:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:0:"";}s:13:"com_installer";O:8:"stdClass":3:{s:7:"message";s:0:"";s:17:"extension_message";s:0:"";s:12:"redirect_url";N;}s:9:"com_menus";O:8:"stdClass":2:{s:5:"items";O:8:"stdClass":3:{s:8:"menutype";s:8:"mainmenu";s:10:"limitstart";i:0;s:4:"list";a:4:{s:9:"direction";s:3:"asc";s:5:"limit";s:2:"20";s:8:"ordering";s:5:"a.lft";s:5:"start";d:0;}}s:4:"edit";O:8:"stdClass":1:{s:4:"item";O:8:"stdClass":4:{s:2:"id";a:0:{}s:4:"data";N;s:4:"type";N;s:4:"link";N;}}}s:4:"item";O:8:"stdClass":1:{s:6:"filter";O:8:"stdClass":1:{s:8:"menutype";s:8:"mainmenu";}}s:14:"com_categories";O:8:"stdClass":2:{s:10:"categories";O:8:"stdClass":1:{s:6:"filter";O:8:"stdClass":1:{s:9:"extension";s:11:"com_content";}}s:4:"edit";O:8:"stdClass":1:{s:8:"category";O:8:"stdClass":2:{s:2:"id";a:1:{i:0;i:2;}s:4:"data";N;}}}s:13:"com_languages";O:8:"stdClass":2:{s:9:"installed";O:8:"stdClass":1:{s:8:"ordercol";s:6:"a.name";}s:9:"overrides";O:8:"stdClass":2:{s:6:"filter";O:8:"stdClass":2:{s:6:"client";s:1:"0";s:8:"language";s:5:"es-ES";}s:10:"limitstart";i:0;}}s:11:"com_modules";O:8:"stdClass":3:{s:7:"modules";O:8:"stdClass":2:{s:6:"filter";O:8:"stdClass":2:{s:18:"client_id_previous";i:0;s:9:"client_id";i:0;}s:10:"limitstart";i:0;}s:4:"edit";O:8:"stdClass":1:{s:6:"module";O:8:"stdClass":2:{s:2:"id";a:0:{}s:4:"data";N;}}s:3:"add";O:8:"stdClass":1:{s:6:"module";O:8:"stdClass":2:{s:12:"extension_id";N;s:6:"params";N;}}}s:13:"com_templates";O:8:"stdClass":1:{s:4:"edit";O:8:"stdClass":1:{s:5:"style";O:8:"stdClass":2:{s:2:"id";a:1:{i:0;i:9;}s:4:"data";N;}}}s:16:"com_joomlaupdate";O:8:"stdClass":3:{s:4:"file";N;s:8:"password";s:32:"Ik0ow3yUyNZbByWpOUOUzdw8qtnNRHn8";s:8:"filesize";i:8196998;}s:10:"com_config";O:8:"stdClass":1:{s:6:"config";O:8:"stdClass":1:{s:6:"global";O:8:"stdClass":1:{s:4:"data";N;}}}s:11:"com_plugins";O:8:"stdClass":2:{s:7:"plugins";O:8:"stdClass":2:{s:6:"filter";O:8:"stdClass":2:{s:6:"search";s:10:"YJMegaMenu";s:6:"folder";s:6:"system";}s:10:"limitstart";i:0;}s:4:"edit";O:8:"stdClass":1:{s:6:"plugin";O:8:"stdClass":2:{s:2:"id";a:0:{}s:4:"data";N;}}}}}s:4:"user";O:5:"JUser":27:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"962";s:4:"name";s:13:"Super Usuario";s:8:"username";s:5:"admin";s:5:"email";s:24:"jjlabradorglez@gmail.com";s:8:"password";s:34:"$P$D7J/gGdaTwzblEqnf6oRrEx7hhu5Sm1";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2014-05-01 15:07:07";s:13:"lastvisitDate";s:19:"2014-05-01 15:08:25";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";N;s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"60e52e3378d253dfb555c4a2999f6dec";}__wf|a:1:{s:13:"session.token";s:32:"c667319294b46a77cfb047a0b43bcd77";}', 962, 'admin'),
-('lg4a72u7f0ug08bjlhtu2pht01', 0, 1, '1398965429', '__default|a:8:{s:15:"session.counter";i:68;s:19:"session.timer.start";i:1398962795;s:18:"session.timer.last";i:1398965206;s:17:"session.timer.now";i:1398965429;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":2:{s:6:"global";O:8:"stdClass":1:{s:4:"list";O:8:"stdClass":1:{s:5:"limit";i:100;}}s:8:"com_tags";O:8:"stdClass":1:{s:3:"tag";O:8:"stdClass":1:{s:4:"list";O:8:"stdClass":1:{s:3:"2:0";O:8:"stdClass":3:{s:12:"filter_order";s:0:"";s:22:"filter_order_direction";s:0:"";s:13:"filter_search";s:0:"";}}}}}}s:4:"user";O:5:"JUser":25:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:1:{i:0;s:2:"13";}s:5:"guest";i:1;s:13:"lastResetTime";N;s:10:"resetCount";N;s:12:"requireReset";N;s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:1:{i:0;s:1:"1";}s:14:"\\0\\0\\0_authLevels";a:2:{i:0;i:1;i:1;i:1;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;}s:13:"session.token";s:32:"3e073acb0c8ae125641dd3324c7cdcac";}admin_change|b:1;', 0, '');
+('gnid933cga80oi3au853e3ijb4', 1, 0, '1398967365', '__default|a:8:{s:15:"session.counter";i:351;s:19:"session.timer.start";i:1398959196;s:18:"session.timer.last";i:1398967364;s:17:"session.timer.now";i:1398967365;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":12:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:0:"";}s:13:"com_installer";O:8:"stdClass":3:{s:7:"message";s:0:"";s:17:"extension_message";s:0:"";s:12:"redirect_url";N;}s:9:"com_menus";O:8:"stdClass":2:{s:5:"items";O:8:"stdClass":3:{s:8:"menutype";s:8:"mainmenu";s:10:"limitstart";i:0;s:4:"list";a:4:{s:9:"direction";s:3:"asc";s:5:"limit";s:2:"20";s:8:"ordering";s:5:"a.lft";s:5:"start";d:0;}}s:4:"edit";O:8:"stdClass":1:{s:4:"item";O:8:"stdClass":4:{s:2:"id";a:0:{}s:4:"data";N;s:4:"type";N;s:4:"link";N;}}}s:4:"item";O:8:"stdClass":1:{s:6:"filter";O:8:"stdClass":1:{s:8:"menutype";s:8:"mainmenu";}}s:14:"com_categories";O:8:"stdClass":2:{s:10:"categories";O:8:"stdClass":1:{s:6:"filter";O:8:"stdClass":1:{s:9:"extension";s:11:"com_content";}}s:4:"edit";O:8:"stdClass":1:{s:8:"category";O:8:"stdClass":2:{s:2:"id";a:1:{i:0;i:2;}s:4:"data";N;}}}s:13:"com_languages";O:8:"stdClass":2:{s:9:"installed";O:8:"stdClass":1:{s:8:"ordercol";s:6:"a.name";}s:9:"overrides";O:8:"stdClass":2:{s:6:"filter";O:8:"stdClass":2:{s:6:"client";s:1:"0";s:8:"language";s:5:"es-ES";}s:10:"limitstart";i:0;}}s:11:"com_modules";O:8:"stdClass":3:{s:7:"modules";O:8:"stdClass":2:{s:6:"filter";O:8:"stdClass":2:{s:18:"client_id_previous";i:0;s:9:"client_id";i:0;}s:10:"limitstart";i:0;}s:4:"edit";O:8:"stdClass":1:{s:6:"module";O:8:"stdClass":2:{s:2:"id";a:0:{}s:4:"data";N;}}s:3:"add";O:8:"stdClass":1:{s:6:"module";O:8:"stdClass":2:{s:12:"extension_id";N;s:6:"params";N;}}}s:13:"com_templates";O:8:"stdClass":1:{s:4:"edit";O:8:"stdClass":1:{s:5:"style";O:8:"stdClass":2:{s:2:"id";a:0:{}s:4:"data";N;}}}s:16:"com_joomlaupdate";O:8:"stdClass":3:{s:4:"file";N;s:8:"password";s:32:"Ik0ow3yUyNZbByWpOUOUzdw8qtnNRHn8";s:8:"filesize";i:8196998;}s:10:"com_config";O:8:"stdClass":1:{s:6:"config";O:8:"stdClass":1:{s:6:"global";O:8:"stdClass":1:{s:4:"data";N;}}}s:11:"com_plugins";O:8:"stdClass":2:{s:7:"plugins";O:8:"stdClass":2:{s:6:"filter";O:8:"stdClass":2:{s:6:"search";s:10:"YJMegaMenu";s:6:"folder";s:6:"system";}s:10:"limitstart";i:0;}s:4:"edit";O:8:"stdClass":1:{s:6:"plugin";O:8:"stdClass":2:{s:2:"id";a:0:{}s:4:"data";N;}}}s:11:"com_checkin";O:8:"stdClass":1:{s:7:"checkin";O:8:"stdClass":1:{s:8:"ordercol";s:5:"table";}}}}s:4:"user";O:5:"JUser":27:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"962";s:4:"name";s:13:"Super Usuario";s:8:"username";s:5:"admin";s:5:"email";s:24:"jjlabradorglez@gmail.com";s:8:"password";s:34:"$P$D7J/gGdaTwzblEqnf6oRrEx7hhu5Sm1";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2014-05-01 15:07:07";s:13:"lastvisitDate";s:19:"2014-05-01 15:08:25";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";N;s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"60e52e3378d253dfb555c4a2999f6dec";}__wf|a:1:{s:13:"session.token";s:32:"c667319294b46a77cfb047a0b43bcd77";}', 962, 'admin'),
+('lg4a72u7f0ug08bjlhtu2pht01', 0, 1, '1398967240', '__default|a:8:{s:15:"session.counter";i:78;s:19:"session.timer.start";i:1398962795;s:18:"session.timer.last";i:1398967239;s:17:"session.timer.now";i:1398967240;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":2:{s:6:"global";O:8:"stdClass":1:{s:4:"list";O:8:"stdClass":1:{s:5:"limit";i:100;}}s:8:"com_tags";O:8:"stdClass":1:{s:3:"tag";O:8:"stdClass":1:{s:4:"list";O:8:"stdClass":1:{s:3:"2:0";O:8:"stdClass":3:{s:12:"filter_order";s:0:"";s:22:"filter_order_direction";s:0:"";s:13:"filter_search";s:0:"";}}}}}}s:4:"user";O:5:"JUser":25:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:1:{i:0;s:2:"13";}s:5:"guest";i:1;s:13:"lastResetTime";N;s:10:"resetCount";N;s:12:"requireReset";N;s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:1:{i:0;s:1:"1";}s:14:"\\0\\0\\0_authLevels";a:2:{i:0;i:1;i:1;i:1;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;}s:13:"session.token";s:32:"3e073acb0c8ae125641dd3324c7cdcac";}admin_change|b:1;', 0, '');
 
 -- --------------------------------------------------------
 
@@ -1700,6 +1752,7 @@ INSERT INTO `omel9_session` (`session_id`, `client_id`, `guest`, `time`, `data`,
 -- Estructura de tabla para la tabla `omel9_tags`
 --
 
+DROP TABLE IF EXISTS `omel9_tags`;
 CREATE TABLE IF NOT EXISTS `omel9_tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -1755,6 +1808,7 @@ INSERT INTO `omel9_tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `tit
 -- Estructura de tabla para la tabla `omel9_template_styles`
 --
 
+DROP TABLE IF EXISTS `omel9_template_styles`;
 CREATE TABLE IF NOT EXISTS `omel9_template_styles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `template` varchar(50) NOT NULL DEFAULT '',
@@ -1784,6 +1838,7 @@ INSERT INTO `omel9_template_styles` (`id`, `template`, `client_id`, `home`, `tit
 -- Estructura de tabla para la tabla `omel9_ucm_base`
 --
 
+DROP TABLE IF EXISTS `omel9_ucm_base`;
 CREATE TABLE IF NOT EXISTS `omel9_ucm_base` (
   `ucm_id` int(10) unsigned NOT NULL,
   `ucm_item_id` int(10) NOT NULL,
@@ -1808,6 +1863,7 @@ INSERT INTO `omel9_ucm_base` (`ucm_id`, `ucm_item_id`, `ucm_type_id`, `ucm_langu
 -- Estructura de tabla para la tabla `omel9_ucm_content`
 --
 
+DROP TABLE IF EXISTS `omel9_ucm_content`;
 CREATE TABLE IF NOT EXISTS `omel9_ucm_content` (
   `core_content_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `core_type_alias` varchar(255) NOT NULL DEFAULT '' COMMENT 'FK to the content types table',
@@ -1869,6 +1925,7 @@ INSERT INTO `omel9_ucm_content` (`core_content_id`, `core_type_alias`, `core_tit
 -- Estructura de tabla para la tabla `omel9_ucm_history`
 --
 
+DROP TABLE IF EXISTS `omel9_ucm_history`;
 CREATE TABLE IF NOT EXISTS `omel9_ucm_history` (
   `version_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ucm_item_id` int(10) unsigned NOT NULL,
@@ -1905,6 +1962,7 @@ INSERT INTO `omel9_ucm_history` (`version_id`, `ucm_item_id`, `ucm_type_id`, `ve
 -- Estructura de tabla para la tabla `omel9_updates`
 --
 
+DROP TABLE IF EXISTS `omel9_updates`;
 CREATE TABLE IF NOT EXISTS `omel9_updates` (
   `update_id` int(11) NOT NULL AUTO_INCREMENT,
   `update_site_id` int(11) DEFAULT '0',
@@ -1985,6 +2043,7 @@ INSERT INTO `omel9_updates` (`update_id`, `update_site_id`, `extension_id`, `nam
 -- Estructura de tabla para la tabla `omel9_update_sites`
 --
 
+DROP TABLE IF EXISTS `omel9_update_sites`;
 CREATE TABLE IF NOT EXISTS `omel9_update_sites` (
   `update_site_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT '',
@@ -2013,6 +2072,7 @@ INSERT INTO `omel9_update_sites` (`update_site_id`, `name`, `type`, `location`, 
 -- Estructura de tabla para la tabla `omel9_update_sites_extensions`
 --
 
+DROP TABLE IF EXISTS `omel9_update_sites_extensions`;
 CREATE TABLE IF NOT EXISTS `omel9_update_sites_extensions` (
   `update_site_id` int(11) NOT NULL DEFAULT '0',
   `extension_id` int(11) NOT NULL DEFAULT '0',
@@ -2036,6 +2096,7 @@ INSERT INTO `omel9_update_sites_extensions` (`update_site_id`, `extension_id`) V
 -- Estructura de tabla para la tabla `omel9_usergroups`
 --
 
+DROP TABLE IF EXISTS `omel9_usergroups`;
 CREATE TABLE IF NOT EXISTS `omel9_usergroups` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Adjacency List Reference Id',
@@ -2070,6 +2131,7 @@ INSERT INTO `omel9_usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
 -- Estructura de tabla para la tabla `omel9_users`
 --
 
+DROP TABLE IF EXISTS `omel9_users`;
 CREATE TABLE IF NOT EXISTS `omel9_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
@@ -2107,6 +2169,7 @@ INSERT INTO `omel9_users` (`id`, `name`, `username`, `email`, `password`, `block
 -- Estructura de tabla para la tabla `omel9_user_keys`
 --
 
+DROP TABLE IF EXISTS `omel9_user_keys`;
 CREATE TABLE IF NOT EXISTS `omel9_user_keys` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) NOT NULL,
@@ -2128,6 +2191,7 @@ CREATE TABLE IF NOT EXISTS `omel9_user_keys` (
 -- Estructura de tabla para la tabla `omel9_user_notes`
 --
 
+DROP TABLE IF EXISTS `omel9_user_notes`;
 CREATE TABLE IF NOT EXISTS `omel9_user_notes` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -2155,6 +2219,7 @@ CREATE TABLE IF NOT EXISTS `omel9_user_notes` (
 -- Estructura de tabla para la tabla `omel9_user_profiles`
 --
 
+DROP TABLE IF EXISTS `omel9_user_profiles`;
 CREATE TABLE IF NOT EXISTS `omel9_user_profiles` (
   `user_id` int(11) NOT NULL,
   `profile_key` varchar(100) NOT NULL,
@@ -2169,6 +2234,7 @@ CREATE TABLE IF NOT EXISTS `omel9_user_profiles` (
 -- Estructura de tabla para la tabla `omel9_user_usergroup_map`
 --
 
+DROP TABLE IF EXISTS `omel9_user_usergroup_map`;
 CREATE TABLE IF NOT EXISTS `omel9_user_usergroup_map` (
   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__users.id',
   `group_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__usergroups.id',
@@ -2188,6 +2254,7 @@ INSERT INTO `omel9_user_usergroup_map` (`user_id`, `group_id`) VALUES
 -- Estructura de tabla para la tabla `omel9_viewlevels`
 --
 
+DROP TABLE IF EXISTS `omel9_viewlevels`;
 CREATE TABLE IF NOT EXISTS `omel9_viewlevels` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `title` varchar(100) NOT NULL DEFAULT '',
@@ -2214,6 +2281,7 @@ INSERT INTO `omel9_viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
 -- Estructura de tabla para la tabla `omel9_weblinks`
 --
 
+DROP TABLE IF EXISTS `omel9_weblinks`;
 CREATE TABLE IF NOT EXISTS `omel9_weblinks` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `catid` int(11) NOT NULL DEFAULT '0',
@@ -2260,6 +2328,7 @@ CREATE TABLE IF NOT EXISTS `omel9_weblinks` (
 -- Estructura de tabla para la tabla `omel9_wf_profiles`
 --
 
+DROP TABLE IF EXISTS `omel9_wf_profiles`;
 CREATE TABLE IF NOT EXISTS `omel9_wf_profiles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -2285,7 +2354,7 @@ CREATE TABLE IF NOT EXISTS `omel9_wf_profiles` (
 
 INSERT INTO `omel9_wf_profiles` (`id`, `name`, `description`, `users`, `types`, `components`, `area`, `device`, `rows`, `plugins`, `published`, `ordering`, `checked_out`, `checked_out_time`, `params`) VALUES
 (1, 'Default', 'Default Profile for all users', '', '3,4,5,6,8,7', '', 0, 'desktop,tablet,phone', 'help,newdocument,undo,redo,spacer,bold,italic,underline,strikethrough,justifyfull,justifycenter,justifyleft,justifyright,spacer,blockquote,formatselect,styleselect,removeformat,cleanup;fontselect,fontsizeselect,forecolor,backcolor,spacer,clipboard,indent,outdent,lists,sub,sup,textcase,charmap,hr;directionality,fullscreen,preview,source,print,searchreplace,spacer,table;visualaid,visualchars,visualblocks,nonbreaking,style,xhtmlxtras,anchor,unlink,link,imgmanager,spellchecker,article', 'charmap,contextmenu,browser,inlinepopups,media,help,clipboard,searchreplace,directionality,fullscreen,preview,source,table,textcase,print,style,nonbreaking,visualchars,visualblocks,xhtmlxtras,imgmanager,anchor,link,spellchecker,article,lists', 1, 1, 0, '0000-00-00 00:00:00', ''),
-(2, 'Front End', 'Sample Front-end Profile', '', '3,4,5', '', 1, 'desktop,tablet,phone', 'help,newdocument,undo,redo,spacer,bold,italic,underline,strikethrough,justifyfull,justifycenter,justifyleft,justifyright,spacer,formatselect,styleselect;clipboard,searchreplace,indent,outdent,lists,cleanup,charmap,removeformat,hr,sub,sup,textcase,nonbreaking,visualchars,visualblocks;fullscreen,preview,print,visualaid,style,xhtmlxtras,anchor,unlink,link,imgmanager,spellchecker,article', 'charmap,contextmenu,inlinepopups,help,clipboard,searchreplace,fullscreen,preview,print,style,textcase,nonbreaking,visualchars,visualblocks,xhtmlxtras,imgmanager,anchor,link,spellchecker,article,lists', 0, 2, 0, '0000-00-00 00:00:00', ''),
+(2, 'Front End', 'Sample Front-end Profile', '', '3,4,5', '', 1, 'desktop,tablet,phone', 'help,newdocument,undo,redo,spacer,bold,italic,underline,strikethrough,justifyfull,justifycenter,justifyleft,justifyright,spacer,formatselect,styleselect;clipboard,searchreplace,indent,outdent,lists,cleanup,charmap,removeformat,hr,sub,sup,textcase,nonbreaking,visualchars,visualblocks;fullscreen,preview,print,visualaid,style,xhtmlxtras,anchor,unlink,link,imgmanager,spellchecker,article', 'charmap,contextmenu,inlinepopups,help,clipboard,searchreplace,fullscreen,preview,print,style,textcase,nonbreaking,visualchars,visualblocks,xhtmlxtras,imgmanager,anchor,link,spellchecker,article,lists', 0, 2, 127, '2014-05-01 18:02:35', ''),
 (3, 'Blogger', 'Simple Blogging Profile', '', '3,4,5,6,8,7', '', 0, 'desktop,tablet,phone', 'bold,italic,strikethrough,lists,blockquote,spacer,justifyleft,justifycenter,justifyright,spacer,link,unlink,imgmanager,article,spellchecker,fullscreen,kitchensink;formatselect,underline,justifyfull,forecolor,clipboard,removeformat,charmap,indent,outdent,undo,redo,help', 'link,imgmanager,article,spellchecker,fullscreen,kitchensink,clipboard,contextmenu,inlinepopups,lists', 0, 3, 0, '0000-00-00 00:00:00', '{"editor":{"toggle":"0"}}'),
 (4, 'Mobile', 'Sample Mobile Profile', '', '3,4,5,6,8,7', '', 0, 'tablet,phone', 'undo,redo,spacer,bold,italic,underline,formatselect,spacer,justifyleft,justifycenter,justifyfull,justifyright,spacer,fullscreen,kitchensink;styleselect,lists,spellchecker,article,link,unlink', 'fullscreen,kitchensink,spellchecker,article,link,inlinepopups,lists', 0, 4, 0, '0000-00-00 00:00:00', '{"editor":{"toolbar_theme":"mobile","resizing":"0","resize_horizontal":"0","resizing_use_cookie":"0","toggle":"0","links":{"popups":{"default":"","jcemediabox":{"enable":"0"},"window":{"enable":"0"}}}}}');
 
