@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-05-2014 a las 17:40:50
+-- Tiempo de generación: 01-05-2014 a las 17:43:52
 -- Versión del servidor: 5.5.27
 -- Versión de PHP: 5.4.7
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `icancarry`
 --
+CREATE DATABASE `icancarry` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `icancarry`;
 
 -- --------------------------------------------------------
 
@@ -126,6 +128,58 @@ CREATE TABLE IF NOT EXISTS `omel9_associations` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `omel9_banner_clients`
+--
+
+CREATE TABLE IF NOT EXISTS `omel9_banner_clients` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `contact` varchar(255) NOT NULL DEFAULT '',
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `extrainfo` text NOT NULL,
+  `state` tinyint(3) NOT NULL DEFAULT '0',
+  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `metakey` text NOT NULL,
+  `own_prefix` tinyint(4) NOT NULL DEFAULT '0',
+  `metakey_prefix` varchar(255) NOT NULL DEFAULT '',
+  `purchase_type` tinyint(4) NOT NULL DEFAULT '-1',
+  `track_clicks` tinyint(4) NOT NULL DEFAULT '-1',
+  `track_impressions` tinyint(4) NOT NULL DEFAULT '-1',
+  PRIMARY KEY (`id`),
+  KEY `idx_own_prefix` (`own_prefix`),
+  KEY `idx_metakey_prefix` (`metakey_prefix`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `omel9_banner_clients`
+--
+
+INSERT INTO `omel9_banner_clients` (`id`, `name`, `contact`, `email`, `extrainfo`, `state`, `checked_out`, `checked_out_time`, `metakey`, `own_prefix`, `metakey_prefix`, `purchase_type`, `track_clicks`, `track_impressions`) VALUES
+(1, 'Joomla! Spanish', 'Administrator', 'joomlaspanish@joomlaspanish.org', '', 1, 0, '0000-00-00 00:00:00', '', 0, '', 1, 1, 1),
+(2, 'PixelPro', 'PixelPro', 'info@pixelpro.es', '', 1, 0, '0000-00-00 00:00:00', '', 0, '', 1, 0, 0),
+(3, 'Webempresa', 'webempresa', 'info@webempresa.com', '', 1, 0, '0000-00-00 00:00:00', '', 0, '', 1, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `omel9_banner_tracks`
+--
+
+CREATE TABLE IF NOT EXISTS `omel9_banner_tracks` (
+  `track_date` datetime NOT NULL,
+  `track_type` int(10) unsigned NOT NULL,
+  `banner_id` int(10) unsigned NOT NULL,
+  `count` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`track_date`,`track_type`,`banner_id`),
+  KEY `idx_track_date` (`track_date`),
+  KEY `idx_track_type` (`track_type`),
+  KEY `idx_banner_id` (`banner_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `omel9_banners`
 --
 
@@ -180,58 +234,6 @@ INSERT INTO `omel9_banners` (`id`, `cid`, `type`, `name`, `alias`, `imptotal`, `
 (2, 3, 0, 'Webempresa', 'webempresa', 0, 15, 0, 'http://webempresa.com/', 1, 3, 'Plantillas Joomla!', '', 0, 1, '', '{"imageurl":"images\\/banners\\/webempresa.png","width":"","height":"","alt":"Páginas Web Joomla!"}', 0, '', -1, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2011-01-01 00:00:01', '*', 42, 'Joomla Spanish', '2012-09-22 03:19:46', 647, 5),
 (3, 2, 0, 'PixelPro', 'pixelpro', 0, 19, 0, 'http://pixelpro.es/', 1, 3, 'PixelPro cursos de Joomla!', '', 0, 1, '', '{"imageurl":"images\\/banners\\/pixelpro.png","width":"","height":"","alt":"PixelPro cursos de Joomla!"}', 0, '', -1, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2011-01-01 00:00:01', '*', 42, 'Joomla', '2012-09-22 03:22:10', 647, 4),
 (4, 1, 0, 'Soporte Joomla! Spanish', 'soporte-joomla-spanish', 0, 46, 1, 'http://joomlaspanish.org/', 1, 3, 'Tus contribuciones de tiempo, talento y dinero a Joomla! son posibles', '', 1, 2, '', '{"imageurl":"images\\/banners\\/logo.png","width":"","height":"","alt":"Joomla! Spanish"}', 0, '', -1, 0, 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2011-01-01 00:00:01', '*', 647, 'Joomla', '2012-09-22 03:21:05', 647, 7);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `omel9_banner_clients`
---
-
-CREATE TABLE IF NOT EXISTS `omel9_banner_clients` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL DEFAULT '',
-  `contact` varchar(255) NOT NULL DEFAULT '',
-  `email` varchar(255) NOT NULL DEFAULT '',
-  `extrainfo` text NOT NULL,
-  `state` tinyint(3) NOT NULL DEFAULT '0',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
-  `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `metakey` text NOT NULL,
-  `own_prefix` tinyint(4) NOT NULL DEFAULT '0',
-  `metakey_prefix` varchar(255) NOT NULL DEFAULT '',
-  `purchase_type` tinyint(4) NOT NULL DEFAULT '-1',
-  `track_clicks` tinyint(4) NOT NULL DEFAULT '-1',
-  `track_impressions` tinyint(4) NOT NULL DEFAULT '-1',
-  PRIMARY KEY (`id`),
-  KEY `idx_own_prefix` (`own_prefix`),
-  KEY `idx_metakey_prefix` (`metakey_prefix`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
-
---
--- Volcado de datos para la tabla `omel9_banner_clients`
---
-
-INSERT INTO `omel9_banner_clients` (`id`, `name`, `contact`, `email`, `extrainfo`, `state`, `checked_out`, `checked_out_time`, `metakey`, `own_prefix`, `metakey_prefix`, `purchase_type`, `track_clicks`, `track_impressions`) VALUES
-(1, 'Joomla! Spanish', 'Administrator', 'joomlaspanish@joomlaspanish.org', '', 1, 0, '0000-00-00 00:00:00', '', 0, '', 1, 1, 1),
-(2, 'PixelPro', 'PixelPro', 'info@pixelpro.es', '', 1, 0, '0000-00-00 00:00:00', '', 0, '', 1, 0, 0),
-(3, 'Webempresa', 'webempresa', 'info@webempresa.com', '', 1, 0, '0000-00-00 00:00:00', '', 0, '', 1, 0, 0);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `omel9_banner_tracks`
---
-
-CREATE TABLE IF NOT EXISTS `omel9_banner_tracks` (
-  `track_date` datetime NOT NULL,
-  `track_type` int(10) unsigned NOT NULL,
-  `banner_id` int(10) unsigned NOT NULL,
-  `count` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`track_date`,`track_type`,`banner_id`),
-  KEY `idx_track_date` (`track_date`),
-  KEY `idx_track_type` (`track_type`),
-  KEY `idx_banner_id` (`banner_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -409,34 +411,6 @@ INSERT INTO `omel9_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `f
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `omel9_contentitem_tag_map`
---
-
-CREATE TABLE IF NOT EXISTS `omel9_contentitem_tag_map` (
-  `type_alias` varchar(255) NOT NULL DEFAULT '',
-  `core_content_id` int(10) unsigned NOT NULL COMMENT 'PK from the core content table',
-  `content_item_id` int(11) NOT NULL COMMENT 'PK from the content type table',
-  `tag_id` int(10) unsigned NOT NULL COMMENT 'PK from the tag table',
-  `tag_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Date of most recent save for this tag-item',
-  `type_id` mediumint(8) NOT NULL COMMENT 'PK from the content_type table',
-  UNIQUE KEY `uc_ItemnameTagid` (`type_id`,`content_item_id`,`tag_id`),
-  KEY `idx_tag_type` (`tag_id`,`type_id`),
-  KEY `idx_date_id` (`tag_date`,`tag_id`),
-  KEY `idx_tag` (`tag_id`),
-  KEY `idx_type` (`type_id`),
-  KEY `idx_core_content_id` (`core_content_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Maps items from content tables to tags';
-
---
--- Volcado de datos para la tabla `omel9_contentitem_tag_map`
---
-
-INSERT INTO `omel9_contentitem_tag_map` (`type_alias`, `core_content_id`, `content_item_id`, `tag_id`, `tag_date`, `type_id`) VALUES
-('com_content.article', 1, 1, 2, '2013-11-16 06:00:00', 1);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `omel9_content_frontpage`
 --
 
@@ -499,6 +473,34 @@ INSERT INTO `omel9_content_types` (`type_id`, `type_title`, `type_alias`, `table
 (13, 'Banner Client', 'com_banners.client', '{"special":{"dbtable":"#__banner_clients","key":"id","type":"Client","prefix":"BannersTable"}}', '', '', '', '{"formFile":"administrator\\/components\\/com_banners\\/models\\/forms\\/client.xml", "hideFields":["checked_out","checked_out_time"], "ignoreChanges":["checked_out", "checked_out_time"], "convertToInt":[], "displayLookup":[]}'),
 (14, 'User Notes', 'com_users.note', '{"special":{"dbtable":"#__user_notes","key":"id","type":"Note","prefix":"UsersTable"}}', '', '', '', '{"formFile":"administrator\\/components\\/com_users\\/models\\/forms\\/note.xml", "hideFields":["checked_out","checked_out_time", "publish_up", "publish_down"],"ignoreChanges":["modified_user_id", "modified_time", "checked_out", "checked_out_time"], "convertToInt":["publish_up", "publish_down"],"displayLookup":[{"sourceColumn":"catid","targetTable":"#__categories","targetColumn":"id","displayColumn":"title"}, {"sourceColumn":"created_user_id","targetTable":"#__users","targetColumn":"id","displayColumn":"name"}, {"sourceColumn":"user_id","targetTable":"#__users","targetColumn":"id","displayColumn":"name"}, {"sourceColumn":"modified_user_id","targetTable":"#__users","targetColumn":"id","displayColumn":"name"}]}'),
 (15, 'User Notes Category', 'com_users.category', '{"special":{"dbtable":"#__categories","key":"id","type":"Category","prefix":"JTable","config":"array()"},"common":{"dbtable":"#__ucm_content","key":"ucm_id","type":"Corecontent","prefix":"JTable","config":"array()"}}', '', '{"common":{"core_content_item_id":"id","core_title":"title","core_state":"published","core_alias":"alias","core_created_time":"created_time","core_modified_time":"modified_time","core_body":"description", "core_hits":"hits","core_publish_up":"null","core_publish_down":"null","core_access":"access", "core_params":"params", "core_featured":"null", "core_metadata":"metadata", "core_language":"language", "core_images":"null", "core_urls":"null", "core_version":"version", "core_ordering":"null", "core_metakey":"metakey", "core_metadesc":"metadesc", "core_catid":"parent_id", "core_xreference":"null", "asset_id":"asset_id"}, "special":{"parent_id":"parent_id","lft":"lft","rgt":"rgt","level":"level","path":"path","extension":"extension","note":"note"}}', '', '{"formFile":"administrator\\/components\\/com_categories\\/models\\/forms\\/category.xml", "hideFields":["checked_out","checked_out_time","version","lft","rgt","level","path","extension"], "ignoreChanges":["modified_user_id", "modified_time", "checked_out", "checked_out_time", "version", "hits", "path"], "convertToInt":["publish_up", "publish_down"], "displayLookup":[{"sourceColumn":"created_user_id","targetTable":"#__users","targetColumn":"id","displayColumn":"name"}, {"sourceColumn":"access","targetTable":"#__viewlevels","targetColumn":"id","displayColumn":"title"},{"sourceColumn":"modified_user_id","targetTable":"#__users","targetColumn":"id","displayColumn":"name"},{"sourceColumn":"parent_id","targetTable":"#__categories","targetColumn":"id","displayColumn":"title"}]}');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `omel9_contentitem_tag_map`
+--
+
+CREATE TABLE IF NOT EXISTS `omel9_contentitem_tag_map` (
+  `type_alias` varchar(255) NOT NULL DEFAULT '',
+  `core_content_id` int(10) unsigned NOT NULL COMMENT 'PK from the core content table',
+  `content_item_id` int(11) NOT NULL COMMENT 'PK from the content type table',
+  `tag_id` int(10) unsigned NOT NULL COMMENT 'PK from the tag table',
+  `tag_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Date of most recent save for this tag-item',
+  `type_id` mediumint(8) NOT NULL COMMENT 'PK from the content_type table',
+  UNIQUE KEY `uc_ItemnameTagid` (`type_id`,`content_item_id`,`tag_id`),
+  KEY `idx_tag_type` (`tag_id`,`type_id`),
+  KEY `idx_date_id` (`tag_date`,`tag_id`),
+  KEY `idx_tag` (`tag_id`),
+  KEY `idx_type` (`type_id`),
+  KEY `idx_core_content_id` (`core_content_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Maps items from content tables to tags';
+
+--
+-- Volcado de datos para la tabla `omel9_contentitem_tag_map`
+--
+
+INSERT INTO `omel9_contentitem_tag_map` (`type_alias`, `core_content_id`, `content_item_id`, `tag_id`, `tag_date`, `type_id`) VALUES
+('com_content.article', 1, 1, 2, '2013-11-16 06:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -1879,6 +1881,53 @@ INSERT INTO `omel9_ucm_history` (`version_id`, `ucm_item_id`, `ucm_type_id`, `ve
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `omel9_update_sites`
+--
+
+CREATE TABLE IF NOT EXISTS `omel9_update_sites` (
+  `update_site_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT '',
+  `type` varchar(20) DEFAULT '',
+  `location` text NOT NULL,
+  `enabled` int(11) DEFAULT '0',
+  `last_check_timestamp` bigint(20) DEFAULT '0',
+  `extra_query` varchar(1000) DEFAULT '',
+  PRIMARY KEY (`update_site_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Update Sites' AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `omel9_update_sites`
+--
+
+INSERT INTO `omel9_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`) VALUES
+(1, 'Joomla Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1398956911, ''),
+(2, 'Directorio de Extensiones Joomla', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1398956911, ''),
+(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 1398956911, '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `omel9_update_sites_extensions`
+--
+
+CREATE TABLE IF NOT EXISTS `omel9_update_sites_extensions` (
+  `update_site_id` int(11) NOT NULL DEFAULT '0',
+  `extension_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`update_site_id`,`extension_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Links extensions to update sites';
+
+--
+-- Volcado de datos para la tabla `omel9_update_sites_extensions`
+--
+
+INSERT INTO `omel9_update_sites_extensions` (`update_site_id`, `extension_id`) VALUES
+(1, 700),
+(2, 700),
+(3, 600);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `omel9_updates`
 --
 
@@ -1960,123 +2009,6 @@ INSERT INTO `omel9_updates` (`update_id`, `update_site_id`, `extension_id`, `nam
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `omel9_update_sites`
---
-
-CREATE TABLE IF NOT EXISTS `omel9_update_sites` (
-  `update_site_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT '',
-  `type` varchar(20) DEFAULT '',
-  `location` text NOT NULL,
-  `enabled` int(11) DEFAULT '0',
-  `last_check_timestamp` bigint(20) DEFAULT '0',
-  `extra_query` varchar(1000) DEFAULT '',
-  PRIMARY KEY (`update_site_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Update Sites' AUTO_INCREMENT=4 ;
-
---
--- Volcado de datos para la tabla `omel9_update_sites`
---
-
-INSERT INTO `omel9_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`) VALUES
-(1, 'Joomla Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1398956911, ''),
-(2, 'Directorio de Extensiones Joomla', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1398956911, ''),
-(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 1398956911, '');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `omel9_update_sites_extensions`
---
-
-CREATE TABLE IF NOT EXISTS `omel9_update_sites_extensions` (
-  `update_site_id` int(11) NOT NULL DEFAULT '0',
-  `extension_id` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`update_site_id`,`extension_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Links extensions to update sites';
-
---
--- Volcado de datos para la tabla `omel9_update_sites_extensions`
---
-
-INSERT INTO `omel9_update_sites_extensions` (`update_site_id`, `extension_id`) VALUES
-(1, 700),
-(2, 700),
-(3, 600);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `omel9_usergroups`
---
-
-CREATE TABLE IF NOT EXISTS `omel9_usergroups` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
-  `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Adjacency List Reference Id',
-  `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
-  `rgt` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
-  `title` varchar(100) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_usergroup_parent_title_lookup` (`parent_id`,`title`),
-  KEY `idx_usergroup_title_lookup` (`title`),
-  KEY `idx_usergroup_adjacency_lookup` (`parent_id`),
-  KEY `idx_usergroup_nested_set_lookup` (`lft`,`rgt`) USING BTREE
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
-
---
--- Volcado de datos para la tabla `omel9_usergroups`
---
-
-INSERT INTO `omel9_usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
-(1, 0, 1, 18, 'Publico'),
-(2, 1, 8, 15, 'Registrado'),
-(3, 2, 9, 14, 'Autor'),
-(4, 3, 10, 13, 'Editor'),
-(5, 4, 11, 12, 'Publicador'),
-(6, 1, 4, 7, 'Gestor'),
-(7, 6, 5, 6, 'Administrador'),
-(8, 1, 16, 17, 'Super Usuarios'),
-(9, 1, 2, 3, 'Invitado');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `omel9_users`
---
-
-CREATE TABLE IF NOT EXISTS `omel9_users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL DEFAULT '',
-  `username` varchar(150) NOT NULL DEFAULT '',
-  `email` varchar(100) NOT NULL DEFAULT '',
-  `password` varchar(100) NOT NULL DEFAULT '',
-  `block` tinyint(4) NOT NULL DEFAULT '0',
-  `sendEmail` tinyint(4) DEFAULT '0',
-  `registerDate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `lastvisitDate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `activation` varchar(100) NOT NULL DEFAULT '',
-  `params` text NOT NULL,
-  `lastResetTime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'Date of last password reset',
-  `resetCount` int(11) NOT NULL DEFAULT '0' COMMENT 'Count of password resets since lastResetTime',
-  `otpKey` varchar(1000) NOT NULL DEFAULT '' COMMENT 'Two factor authentication encrypted keys',
-  `otep` varchar(1000) NOT NULL DEFAULT '' COMMENT 'One time emergency passwords',
-  PRIMARY KEY (`id`),
-  KEY `idx_name` (`name`),
-  KEY `idx_block` (`block`),
-  KEY `username` (`username`),
-  KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=963 ;
-
---
--- Volcado de datos para la tabla `omel9_users`
---
-
-INSERT INTO `omel9_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`) VALUES
-(962, 'Super Usuario', 'admin', 'jjlabradorglez@gmail.com', '$P$D7J/gGdaTwzblEqnf6oRrEx7hhu5Sm1', 0, 1, '2014-05-01 15:07:07', '2014-05-01 15:08:25', '0', '', '0000-00-00 00:00:00', 0, '', '');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `omel9_user_keys`
 --
 
@@ -2154,6 +2086,76 @@ CREATE TABLE IF NOT EXISTS `omel9_user_usergroup_map` (
 
 INSERT INTO `omel9_user_usergroup_map` (`user_id`, `group_id`) VALUES
 (962, 8);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `omel9_usergroups`
+--
+
+CREATE TABLE IF NOT EXISTS `omel9_usergroups` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Adjacency List Reference Id',
+  `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
+  `rgt` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
+  `title` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_usergroup_parent_title_lookup` (`parent_id`,`title`),
+  KEY `idx_usergroup_title_lookup` (`title`),
+  KEY `idx_usergroup_adjacency_lookup` (`parent_id`),
+  KEY `idx_usergroup_nested_set_lookup` (`lft`,`rgt`) USING BTREE
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+--
+-- Volcado de datos para la tabla `omel9_usergroups`
+--
+
+INSERT INTO `omel9_usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
+(1, 0, 1, 18, 'Publico'),
+(2, 1, 8, 15, 'Registrado'),
+(3, 2, 9, 14, 'Autor'),
+(4, 3, 10, 13, 'Editor'),
+(5, 4, 11, 12, 'Publicador'),
+(6, 1, 4, 7, 'Gestor'),
+(7, 6, 5, 6, 'Administrador'),
+(8, 1, 16, 17, 'Super Usuarios'),
+(9, 1, 2, 3, 'Invitado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `omel9_users`
+--
+
+CREATE TABLE IF NOT EXISTS `omel9_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `username` varchar(150) NOT NULL DEFAULT '',
+  `email` varchar(100) NOT NULL DEFAULT '',
+  `password` varchar(100) NOT NULL DEFAULT '',
+  `block` tinyint(4) NOT NULL DEFAULT '0',
+  `sendEmail` tinyint(4) DEFAULT '0',
+  `registerDate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `lastvisitDate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `activation` varchar(100) NOT NULL DEFAULT '',
+  `params` text NOT NULL,
+  `lastResetTime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'Date of last password reset',
+  `resetCount` int(11) NOT NULL DEFAULT '0' COMMENT 'Count of password resets since lastResetTime',
+  `otpKey` varchar(1000) NOT NULL DEFAULT '' COMMENT 'Two factor authentication encrypted keys',
+  `otep` varchar(1000) NOT NULL DEFAULT '' COMMENT 'One time emergency passwords',
+  PRIMARY KEY (`id`),
+  KEY `idx_name` (`name`),
+  KEY `idx_block` (`block`),
+  KEY `username` (`username`),
+  KEY `email` (`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=963 ;
+
+--
+-- Volcado de datos para la tabla `omel9_users`
+--
+
+INSERT INTO `omel9_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`) VALUES
+(962, 'Super Usuario', 'admin', 'jjlabradorglez@gmail.com', '$P$D7J/gGdaTwzblEqnf6oRrEx7hhu5Sm1', 0, 1, '2014-05-01 15:07:07', '2014-05-01 15:08:25', '0', '', '0000-00-00 00:00:00', 0, '', '');
 
 -- --------------------------------------------------------
 
