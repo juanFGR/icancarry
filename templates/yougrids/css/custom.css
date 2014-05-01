@@ -13,3 +13,25 @@
  THIS FILE WILL LOAD VERY LAST AFTER ALL TEMPLATE CSS FILES.
  SO YOU CAN OVERRIDE ANY CSS PART OF THE TEMPLATE YOU NEED.
 */
+
+#onlySearch { margin-bottom: 0px;}
+#labelShow {display: inline;}
+
+div.searchintro {
+	width: 250px;
+	display: inline;
+	float: left;
+}
+p, div.searchintro {
+	padding-top: 6px;
+	display: inline;
+}
+div.form-limit {
+	width: 200px;
+	float: left;	
+}
+div.clear {clear: left;}
+
+.result-title {font-size: 20px;}
+.result-category {font-size: 15px;}
+.result-text {font-size: 14px;}

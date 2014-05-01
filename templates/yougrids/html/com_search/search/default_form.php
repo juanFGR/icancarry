@@ -23,26 +23,21 @@ $upper_limit = $lang->getUpperLimitSearchWord();
 		<button name="Search" onclick="this.form.submit()" class="btn btn-small button"><?php echo JText::_('COM_SEARCH_SEARCH');?></button>
 	</fieldset>
 
-	<div class="searchintro<?php echo $this->params->get('pageclass_sfx'); ?>">
-		<?php if (!empty($this->searchword)):?>
-		<p><?php echo JText::plural('COM_SEARCH_SEARCH_KEYWORD_N_RESULTS', $this->total);?></p>
-		<?php endif;?>
-	</div>
-
+<!-- 
 	<fieldset class="phrases">
-		<legend><?php echo JText::_('COM_SEARCH_FOR');?>
+		<legend><?php //echo JText::_('COM_SEARCH_FOR');?>
 		</legend>
 			<div class="phrases-box">
-			<?php echo $this->lists['searchphrase']; ?>
+			<?php //echo $this->lists['searchphrase']; ?>
 			</div>
 			<div class="ordering-box">
 			<label for="ordering" class="ordering">
-				<?php echo JText::_('COM_SEARCH_ORDERING');?>
+				<?php //echo JText::_('COM_SEARCH_ORDERING');?>
 			</label>
-			<?php echo $this->lists['ordering'];?>
+			<?php //echo $this->lists['ordering'];?>
 			</div>
 	</fieldset>
-
+-->
 	<?php if ($this->params->get('search_areas', 1)) : ?>
 		<fieldset class="only">
 		<legend><?php echo JText::_('COM_SEARCH_SEARCH_ONLY');?></legend>
@@ -57,6 +52,12 @@ $upper_limit = $lang->getUpperLimitSearchWord();
 		</fieldset>
 	<?php endif; ?>
 
+	<div class="searchintro<?php echo $this->params->get('pageclass_sfx'); ?>">
+		<?php if (!empty($this->searchword)):?>
+		<p><?php echo JText::plural('COM_SEARCH_SEARCH_KEYWORD_N_RESULTS', $this->total);?></p>
+		<?php endif;?>
+	</div>
+	
 <?php if ($this->total > 0) : ?>
 
 	<div class="form-limit">

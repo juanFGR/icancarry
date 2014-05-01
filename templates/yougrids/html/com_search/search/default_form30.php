@@ -27,29 +27,24 @@ JHtml::_('bootstrap.tooltip');
 		<div class="clearfix"></div>
 	</div>
 
-	<div class="searchintro<?php echo $this->params->get('pageclass_sfx'); ?>">
-		<?php if (!empty($this->searchword)):?>
-		<p><?php echo JText::plural('COM_SEARCH_SEARCH_KEYWORD_N_RESULTS', '<span class="badge badge-info">'. $this->total. '</span>');?></p>
-		<?php endif;?>
-	</div>
-
+<!-- 
 	<fieldset class="phrases">
-		<legend><?php echo JText::_('COM_SEARCH_FOR');?>
+		<legend><?php //echo JText::_('COM_SEARCH_FOR');?>
 		</legend>
 			<div class="phrases-box">
-			<?php echo $this->lists['searchphrase']; ?>
+			<?php //echo $this->lists['searchphrase']; ?>
 			</div>
 			<div class="ordering-box">
 			<label for="ordering" class="ordering">
-				<?php echo JText::_('COM_SEARCH_ORDERING');?>
+				<?php //echo JText::_('COM_SEARCH_ORDERING');?>
 			</label>
-			<?php echo $this->lists['ordering'];?>
+			<?php //echo $this->lists['ordering'];?>
 			</div>
 	</fieldset>
-
+-->
 	<?php if ($this->params->get('search_areas', 1)) : ?>
 		<fieldset class="only">
-		<legend><?php echo JText::_('COM_SEARCH_SEARCH_ONLY');?></legend>
+		<legend id="onlySearch"><?php echo JText::_('COM_SEARCH_SEARCH_ONLY');?></legend>
 		<?php foreach ($this->searchareas['search'] as $val => $txt) :
 			$checked = is_array($this->searchareas['active']) && in_array($val, $this->searchareas['active']) ? 'checked="checked"' : '';
 		?>
@@ -61,10 +56,16 @@ JHtml::_('bootstrap.tooltip');
 		</fieldset>
 	<?php endif; ?>
 
+	<div class="searchintro<?php echo $this->params->get('pageclass_sfx'); ?>">
+		<?php if (!empty($this->searchword)):?>
+		<p><?php echo JText::plural('COM_SEARCH_SEARCH_KEYWORD_N_RESULTS', '<span class="badge badge-info">'. $this->total. '</span>');?></p>
+		<?php endif;?>
+	</div>
+	
 <?php if ($this->total > 0) : ?>
 
 	<div class="form-limit">
-		<label for="limit">
+		<label id="labelShow" for="limit">
 			<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>
 		</label>
 		<?php echo $this->pagination->getLimitBox(); ?>

@@ -10,6 +10,8 @@
 defined('_JEXEC') or die;
 ?>
 
+<div class="clear"></div>
+<br/>
 <dl class="search-results<?php echo $this->pageclass_sfx; ?>">
 <?php foreach($this->results as $result) : ?>
 	<dt class="result-title">
@@ -32,11 +34,13 @@ defined('_JEXEC') or die;
 	<dd class="result-text">
 		<?php echo $result->text; ?>
 	</dd>
-	<?php if ($this->params->get('show_date')) : ?>
-		<dd class="result-created<?php echo $this->pageclass_sfx; ?>">
-			<?php echo JText::sprintf('JGLOBAL_CREATED_DATE_ON', $result->created); ?>
+	<?php //if ($this->params->get('show_date')) : ?>
+		<!-- <dd class="result-created<?php //echo $this->pageclass_sfx; ?>">
+			<?php //echo JText::sprintf('JGLOBAL_CREATED_DATE_ON', $result->created); ?>
 		</dd>
-	<?php endif; ?>
+		-->
+	<?php //endif; ?>
+	<br/>
 <?php endforeach; ?>
 </dl>
 
